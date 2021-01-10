@@ -48,6 +48,13 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
@@ -57,13 +64,6 @@
         android:layout_margin="20.0dip"
         android:padding="5dip"
         android:textSize="25dp"
-        />
-
-    <ProgressBar
-        android:id="@+id/pbLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
         />
 
 </LinearLayout>
