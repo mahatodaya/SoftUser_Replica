@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
         val adapter = StudentAdapter(lstStudents, this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
+
         return view
     }
 
@@ -45,5 +46,4 @@ class HomeFragment : Fragment() {
             "Lionel Messi", 34, "Spain","Male"
             ))
     }
-
 }
