@@ -44,6 +44,7 @@
             android:layout_marginRight="20.0dip"
             android:layout_marginLeft="20.0dip"
             android:hint="Age"
+            android:inputType="number"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -63,6 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioButton
+            android:id="@+id/rdoMale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Male"
@@ -71,6 +73,7 @@
             android:layout_marginTop="5dp"
             />
         <RadioButton
+            android:id="@+id/rdoFemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Female"
@@ -78,6 +81,7 @@
             android:layout_marginRight="20dp"
             />
         <RadioButton
+            android:id="@+id/rdoOthers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Others"
@@ -98,7 +102,6 @@
             android:layout_marginRight="20.0dip"
             android:layout_marginLeft="20.0dip"
             android:hint="Address"
-            android:inputType="textPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             />
     </com.google.android.material.textfield.TextInputLayout>

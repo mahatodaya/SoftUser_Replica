@@ -1,58 +1,77 @@
 package com.dayaram.week6_assignment1.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
 import com.dayaram.week6_assignment1.R
+import com.dayaram.week6_assignment1.StudentData
+import com.dayaram.week6_assignment1.model.Student
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [StudentFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class StudentFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var etFullName: EditText
+    private lateinit var etAge: EditText
+    private lateinit var rdoGender: RadioGroup
+    private lateinit var rdoMale: RadioButton
+    private lateinit var rdoFemale: RadioButton
+    private lateinit var rdoOthers: RadioButton
+    private lateinit var etAddress: EditText
+    private lateinit var pbSave: ProgressBar
+    private lateinit var btnSave: Button
+    val students = arrayListOf<Student>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_student, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment StudentFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                StudentFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+        etFullName = view.findViewById(R.id.etFullName)
+        etAge = view.findViewById(R.id.etAge)
+        rdoGender = view.findViewById(R.id.rdoGender)
+        rdoMale = view.findViewById(R.id.rdoMale)
+        rdoFemale = view.findViewById(R.id.rdoFemale)
+        rdoOthers = view.findViewById(R.id.rdoOthers)
+        etAddress = view.findViewById(R.id.etAddress)
+        pbSave = view.findViewById(R.id.pbSave)
+        btnSave = view.findViewById(R.id.btnSave)
+
+
+        btnSave.setOnClickListener {
+            // pbSave.visibility = View.VISIBLE
+            Toast.makeText(view.context, "Student not added", Toast.LENGTH_LONG).show()
+
+            val fullName = etFullName.text.toString()
+            val age = etAge.text.toString().toInt()
+            val address = etAddress.text.toString()
+            val checkedId = rdoGender.checkedRadioButtonId
+            val checkRB: RadioButton = view.findViewById(checkedId)
+            val gender = checkRB.text.toString()
+
+            StudentData.studentData.add(Student(fullName, age, address, gender))
+
+
+
+//            val intent = Intent(this, Lab07OutputActivity::class.java)
+//            intent.putExtra("students", Student(name, address, mobileNumber, sex ))
+//            setResult(Activity.RESULT_OK,intent)
+//            finish()
+
+            // students.add(Student(fullName, age, address, gender ))
+
+
+
+
+        }
+        return view
     }
 }

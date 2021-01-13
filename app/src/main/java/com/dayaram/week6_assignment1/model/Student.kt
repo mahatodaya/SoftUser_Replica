@@ -1,8 +1,8 @@
 package com.dayaram.week6_assignment1.model
 
 data class Student(
-    val studentID : Int? = null,
-    val imgProfile : String? = null,
+//    val studentID : Int? = null,
+//    val imgProfile : String? = null,
     val name : String? = null,
     val age : Int? = null,
     val address : String? = null,
