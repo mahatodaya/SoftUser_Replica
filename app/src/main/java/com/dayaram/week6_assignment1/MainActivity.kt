@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dayaram.week6_assignment1.fragments.HomeFragment
+import com.dayaram.week6_assignment1.model.Student
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -20,5 +21,16 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.fragment)
 
         bottomNavigationView.setupWithNavController(navController)
+
+        loadStudents()
+    }
+
+    private fun loadStudents(){
+        StudentData.studentData.add(Student(
+                "Neymar Junior", 29, "France", "Male"
+        ))
+        StudentData.studentData.add(Student(
+                "Lionel Messi", 34, "Spain","Male"
+        ))
     }
 }

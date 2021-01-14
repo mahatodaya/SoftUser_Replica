@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.recyclerView)
 
-//        loadStudents()
+
 
         val adapter = StudentAdapter(StudentData.studentData as ArrayList<Student>, this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -40,12 +40,5 @@ class HomeFragment : Fragment() {
         return view
     }
 
-//    private fun loadStudents(){
-//        StudentData.studentData.add(Student(
-//            "Neymar Junior", 29, "France", "Male"
-//            ))
-//        StudentData.studentData.add(Student(
-//            "Lionel Messi", 34, "Spain","Male"
-//            ))
-//    }
+
 }

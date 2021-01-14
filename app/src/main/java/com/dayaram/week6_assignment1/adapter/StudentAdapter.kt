@@ -1,20 +1,23 @@
 package com.dayaram.week6_assignment1.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.dayaram.week6_assignment1.R
+import com.dayaram.week6_assignment1.StudentData
 import com.dayaram.week6_assignment1.fragments.HomeFragment
 import com.dayaram.week6_assignment1.model.Student
 
 class StudentAdapter(
-    val lstStudents: ArrayList<Student>,
-    val context: HomeFragment
+        val lstStudents: ArrayList<Student>,
+        val context: HomeFragment,
+
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
     class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
@@ -23,6 +26,7 @@ class StudentAdapter(
         val tvage : TextView
         val tvaddress : TextView
         val tvgender : TextView
+        val deleteImgBtn : ImageButton
 
         init {
             imgProfile = view.findViewById(R.id.imageProfile)
@@ -30,6 +34,7 @@ class StudentAdapter(
             tvage = view.findViewById(R.id.tvAge)
             tvaddress = view.findViewById(R.id.tvAddress)
             tvgender = view.findViewById(R.id.tvGender)
+            deleteImgBtn = view.findViewById(R.id.imgBtnDelete)
         }
     }
 
@@ -46,6 +51,11 @@ class StudentAdapter(
         holder.tvaddress.text = student.address
         holder.tvgender.text = student.gender
 
+        holder.deleteImgBtn.setOnClickListener {
+            StudentData.studentData.removeAt(position)
+            Log.d("JJJJ", "clicked")
+            this.notifyDataSetChanged()
+        }
 
 //        Glide.with(context)
 //            .load(student.imgProfile)
