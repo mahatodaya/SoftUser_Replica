@@ -15,6 +15,25 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Profile Picture"
+        android:textSize="15.0sp"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginTop="10dp"
+        />
+
+    <Spinner
+        android:id="@+id/imgProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginTop="10dp"
+        />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

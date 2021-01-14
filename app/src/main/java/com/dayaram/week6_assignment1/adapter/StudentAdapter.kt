@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dayaram.week6_assignment1.R
 import com.dayaram.week6_assignment1.StudentData
 import com.dayaram.week6_assignment1.fragments.HomeFragment
@@ -57,9 +58,9 @@ class StudentAdapter(
             this.notifyDataSetChanged()
         }
 
-//        Glide.with(context)
-//            .load(student.imgProfile)
-//            .into(holder.imgProfile)
+        Glide.with(context)
+            .load(student.imgProfile)
+            .into(holder.imgProfile)
     }
 
     override fun getItemCount(): Int {

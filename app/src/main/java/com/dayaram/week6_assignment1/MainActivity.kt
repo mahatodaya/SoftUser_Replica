@@ -27,10 +27,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadStudents(){
         StudentData.studentData.add(Student(
-                "Neymar Junior", 29, "France", "Male"
+                "https://www.nepalitrends.com/wp-content/uploads/2018/01/Paul-Shah.jpg",
+                "Paul Shah", 27, "Baneshwor", "Male"
         ))
         StudentData.studentData.add(Student(
-                "Lionel Messi", 34, "Spain","Male"
+                "https://www.goalnepal.com/uploads/news/1575547345.jpg",
+                "Sabitra Bhandari", 25, "Lagankhel", "Female"
         ))
     }
 }
