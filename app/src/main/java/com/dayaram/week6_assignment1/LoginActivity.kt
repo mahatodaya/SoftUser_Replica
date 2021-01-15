@@ -28,14 +28,17 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // Function to login with valid username and password
     private fun login() {
         val username = etUsername.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
-        if (username == "softwarica" && password == "coventry"){
+        if (username == "softwarica" && password == "coventry") {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        // Shows progress bar
         pbLogin.visibility = View.VISIBLE
     }
 }

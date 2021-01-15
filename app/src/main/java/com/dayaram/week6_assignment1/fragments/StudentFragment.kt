@@ -1,6 +1,7 @@
 package com.dayaram.week6_assignment1.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,24 +22,22 @@ class StudentFragment : Fragment() {
     private lateinit var rdoFemale: RadioButton
     private lateinit var rdoOthers: RadioButton
     private lateinit var etAddress: EditText
-    private lateinit var pbSave: ProgressBar
     private lateinit var btnSave: Button
 
+    // For getting image for url and use of map
     private val profileImage = arrayOf(
-            "Paul Shah" , "https://www.nepalitrends.com/wp-content/uploads/2018/01/Paul-Shah.jpg",
-            "Sabitra Bhandari",  "https://www.goalnepal.com/uploads/news/1575547345.jpg",
-            "Kiran Chemjong" , "https://www.nepaligoal.com/wp-content/uploads/2016/01/Kiran-Chemjong.jpg",
-            "Sushant Khatri" , "https://www.nepalitrends.com/wp-content/uploads/2018/05/29389202_1657650554329868_969951466522432452_n-e1525455906640-760x456.jpg",
-            "Swastima Khadka" , "https://lugako.com/wp-content/uploads/2019/03/17931997_280067729110364_2098065994810392576_n-e1551595766757-749x600.jpg",
-            "Bharat Khawas" , "https://goalnepal.com/uploads/news/1546954013.png",
-            "Paras Khadka" , "https://thehimalayantimes.com/wp-content/uploads/2017/04/Paras-Khadka-celebrates-scoring-50-runs.jpg",
-            "Alisha Sharma" , "https://lh3.googleusercontent.com/proxy/L0XZgXwdk0abuwnBn7HOpEPsRnP-_LRArBZeKjH8NceWXCAalJs6k0N7lg6qY4g81du3gotAvsGlBpX99ISYXn1WH5pKI-1cO1Wq3ix4tow83PIaiDjDlhJi6iXTsxfzuS5OsBke1kH2",
-            "Sandeep Lamichhane" , "https://www.cricket.com.au/-/media/News/2018/12/20Sandeep.ashx"
+            "Paul Shah", "https://www.nepalitrends.com/wp-content/uploads/2018/01/Paul-Shah.jpg",
+            "Sabitra Bhandari", "https://www.goalnepal.com/uploads/news/1575547345.jpg",
+            "Kiran Chemjong", "https://www.nepaligoal.com/wp-content/uploads/2016/01/Kiran-Chemjong.jpg",
+            "Sushant Khatri", "https://www.nepalitrends.com/wp-content/uploads/2018/05/29389202_1657650554329868_969951466522432452_n-e1525455906640-760x456.jpg",
+            "Swastima Khadka", "https://lugako.com/wp-content/uploads/2019/03/17931997_280067729110364_2098065994810392576_n-e1551595766757-749x600.jpg",
+            "Bharat Khawas", "https://goalnepal.com/uploads/news/1546954013.png",
+            "Paras Khadka", "https://thehimalayantimes.com/wp-content/uploads/2017/04/Paras-Khadka-celebrates-scoring-50-runs.jpg",
+            "Alisha Sharma", "https://lh3.googleusercontent.com/proxy/L0XZgXwdk0abuwnBn7HOpEPsRnP-_LRArBZeKjH8NceWXCAalJs6k0N7lg6qY4g81du3gotAvsGlBpX99ISYXn1WH5pKI-1cO1Wq3ix4tow83PIaiDjDlhJi6iXTsxfzuS5OsBke1kH2",
+            "Sandeep Lamichhane", "https://www.cricket.com.au/-/media/News/2018/12/20Sandeep.ashx"
     )
 
     var selectedImage = ""
-
-    val students = arrayListOf<Student>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,55 +56,48 @@ class StudentFragment : Fragment() {
         rdoFemale = view.findViewById(R.id.rdoFemale)
         rdoOthers = view.findViewById(R.id.rdoOthers)
         etAddress = view.findViewById(R.id.etAddress)
-        pbSave = view.findViewById(R.id.pbSave)
         btnSave = view.findViewById(R.id.btnSave)
+
         adapter()
 
 
         btnSave.setOnClickListener {
-            // pbSave.visibility = View.VISIBLE
-            Toast.makeText(view.context, "Student not added", Toast.LENGTH_LONG).show()
 
+            if (setValidation()) {
+                val fullName = etFullName.text.toString()
+                val age = etAge.text.toString().toInt()
+                val address = etAddress.text.toString()
+                val checkedId = rdoGender.checkedRadioButtonId
+                val checkRB: RadioButton = view.findViewById(checkedId)
+                val gender = checkRB.text.toString()
 
-            val fullName = etFullName.text.toString()
-            val age = etAge.text.toString().toInt()
-            val address = etAddress.text.toString()
-            val checkedId = rdoGender.checkedRadioButtonId
-            val checkRB: RadioButton = view.findViewById(checkedId)
-            val gender = checkRB.text.toString()
+                StudentData.studentData.add(Student(selectedImage, fullName, age, address, gender))
 
-            StudentData.studentData.add(Student( selectedImage ,fullName, age, address, gender))
-
-
-
-//            val intent = Intent(this, Lab07OutputActivity::class.java)
-//            intent.putExtra("students", Student(name, address, mobileNumber, sex ))
-//            setResult(Activity.RESULT_OK,intent)
-//            finish()
-
-            // students.add(Student(fullName, age, address, gender ))
-
-
-
-
+                clearText()
+                Toast.makeText(activity, "Student Added Successfully", Toast.LENGTH_LONG).show()
+            }
         }
+
         return view
     }
 
-    private fun adapter(){
+    // Function to load adapter values
+    private fun adapter() {
 
         val imageURL = mutableMapOf<String, String>()
-        for ( i in profileImage.indices step 2){
+        for (i in profileImage.indices step 2) {
             imageURL[profileImage[i]] = profileImage[i + 1]
         }
 
         val profile = activity?.let {
-            ArrayAdapter(it, android.R.layout.simple_list_item_1,
+            ArrayAdapter(it,
+                    android.R.layout.simple_list_item_1,
                     imageURL.keys.toTypedArray())
         }
         spImgProfile.adapter = profile
 
-        spImgProfile.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        // Selecting image
+        spImgProfile.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val image = parent?.getItemAtPosition(position).toString()
                 selectedImage = imageURL[image].toString()
@@ -115,5 +107,36 @@ class StudentFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         }
+    }
+
+    // Function to check validation
+    private fun setValidation(): Boolean {
+        var flag = true
+        when {
+            TextUtils.isEmpty(etFullName.text) -> {
+                etFullName.error = "Please enter name."
+                etFullName.requestFocus()
+                flag = false
+            }
+            TextUtils.isEmpty(etAge.text) -> {
+                etAge.error = "Please enter age."
+                etAge.requestFocus()
+                flag = false
+            }
+            TextUtils.isEmpty(etAddress.text) -> {
+                etAddress.error = "Please enter address."
+                etAddress.requestFocus()
+                flag = false
+            }
+        }
+        return flag
+    }
+
+    // Function to clear text from editText
+    private fun clearText() {
+        etFullName.setText("")
+        etAge.setText("")
+        etAddress.setText("")
+        etFullName.requestFocus()
     }
 }

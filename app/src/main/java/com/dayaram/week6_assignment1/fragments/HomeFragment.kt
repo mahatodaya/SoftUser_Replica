@@ -13,32 +13,27 @@ import com.dayaram.week6_assignment1.adapter.StudentAdapter
 import com.dayaram.week6_assignment1.model.Student
 
 class HomeFragment : Fragment() {
-    private lateinit var recyclerView : RecyclerView
-    private var lstStudents = ArrayList<Student>()
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView)
 
-
-
+        // Loading recycler view in home fragment by the use of adapter
         val adapter = StudentAdapter(StudentData.studentData as ArrayList<Student>, this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 
         return view
     }
-
-
 }

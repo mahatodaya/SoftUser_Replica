@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         loadStudents()
     }
 
-    private fun loadStudents(){
+    // Function to display to static data.
+    private fun loadStudents() {
         StudentData.studentData.add(Student(
                 "https://www.nepalitrends.com/wp-content/uploads/2018/01/Paul-Shah.jpg",
                 "Paul Shah", 27, "Baneshwor", "Male"
