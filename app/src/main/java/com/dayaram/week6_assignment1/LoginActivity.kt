@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         val username = etUsername.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
+        // Set up username and password
         if (username == "softwarica" && password == "coventry") {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
