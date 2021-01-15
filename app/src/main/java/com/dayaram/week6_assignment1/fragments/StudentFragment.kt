@@ -33,7 +33,7 @@ class StudentFragment : Fragment() {
             "Swastima Khadka", "https://lugako.com/wp-content/uploads/2019/03/17931997_280067729110364_2098065994810392576_n-e1551595766757-749x600.jpg",
             "Bharat Khawas", "https://goalnepal.com/uploads/news/1546954013.png",
             "Paras Khadka", "https://thehimalayantimes.com/wp-content/uploads/2017/04/Paras-Khadka-celebrates-scoring-50-runs.jpg",
-            "Alisha Sharma", "https://lh3.googleusercontent.com/proxy/L0XZgXwdk0abuwnBn7HOpEPsRnP-_LRArBZeKjH8NceWXCAalJs6k0N7lg6qY4g81du3gotAvsGlBpX99ISYXn1WH5pKI-1cO1Wq3ix4tow83PIaiDjDlhJi6iXTsxfzuS5OsBke1kH2",
+            "Alisha Sharma", "https://lh3.googleusercontent.com/proxy/Ejl5yzQOSJPxMT8fb_4TJQk9a6cb1hoCH-dOg6PJUYyqs8uipkqUGTc7-rGy2QGmcT-Qg3JJiT4X7tVqS2cDNJcNdaGzxCttAkQaYYx0gU7sDksJjH3Kf7DEdx7RzhaNHlI1fpx67Omka5N0KiiNSFFlcxI",
             "Sandeep Lamichhane", "https://www.cricket.com.au/-/media/News/2018/12/20Sandeep.ashx"
     )
 
