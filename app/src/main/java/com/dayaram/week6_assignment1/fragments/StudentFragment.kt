@@ -60,9 +60,7 @@ class StudentFragment : Fragment() {
 
         adapter()
 
-
         btnSave.setOnClickListener {
-
             if (setValidation()) {
                 val fullName = etFullName.text.toString()
                 val age = etAge.text.toString().toInt()
@@ -77,7 +75,6 @@ class StudentFragment : Fragment() {
                 Toast.makeText(activity, "Student Added Successfully", Toast.LENGTH_LONG).show()
             }
         }
-
         return view
     }
 
